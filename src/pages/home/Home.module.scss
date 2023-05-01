@@ -1,0 +1,74 @@
+.home {
+
+}
+.home_content{
+    padding:  0 60px;
+    
+
+}
+.service{
+    display: flex;
+    
+    position: relative;
+}
+.service_left{
+    margin-right: -220px; /* Используйте отрицательное значение margin-right для наслаивания блока на блок .service_right */
+    position: relative; /* Добавьте относительное позиционирование */
+    z-index: 2;
+    overflow: hidden;
+    
+}
+.service_left__caption{
+    font-family: 'Ferry';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 72px;
+    letter-spacing: 0.01em;
+   
+    max-width: 743px;
+   
+}
+.service_left__description{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.01em;
+}
+button{
+    background: #5970FF;
+    border-radius: 5px;
+}
+.button_service{
+   color: white;
+    width: 335px;
+    height: 59px;
+    font-size: 22px;
+    line-height: 27px;
+    margin-top: 64px;
+    border: none;
+    letter-spacing: 0.01em;
+}
+.service_right{
+    
+    right: 0; /* Расположите блок .service_right справа */
+    z-index: 1;
+    top: 40px;
+    position: relative;
+}
+.service_img{
+    max-width: 100%;
+   
+}
+
+.value{
+
+}
+.img{
+
+}
+.rates{
+
+}
