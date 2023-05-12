@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+
 import { registration } from '../../action/user'
-import { HOST } from '../../API'
+
 
 import styles from './Form.module.scss'
 
@@ -26,11 +26,7 @@ useEffect( () =>{
             case "isEmpty":
                 value ? setEmpty(false) : setEmpty(true)
             break;
-            case "isPhone":
-                const Re = /^[\d\+][\d\(\)\ -]{4,14}\d$/;
-                
-                Re.test(value)? setPhone(false): setPhone(true)
-            break
+            
         }
     }
 },    [value])
@@ -77,7 +73,7 @@ return{
 
 export const Form = () => {
     
-const loginInput = useInput("any",{isEmpty: true,isPhone:true})
+const loginInput = useInput("any",{isEmpty: true,})
 const passwordInput = useInput("any", {isEmpty:true, minLength:5})
 
 
@@ -109,8 +105,19 @@ const passwordInput = useInput("any", {isEmpty:true, minLength:5})
             </div>
             {(passwordInput.isDirty && passwordInput.isEmpty) && <div className={styles.err}>Поле не может быть пустым</div>}
             {(passwordInput.isDirty && passwordInput.minLengthError) && <div className={styles.err}>некорректная длина</div>}
-
-           <button disabled ={(!loginInput.inputValid || !passwordInput.inputValid)}  className={styles.button_service} onClick={()=> registration (loginInput.value, passwordInput.value)}>Войти</button>
+            <button
+  disabled={!loginInput.inputValid || !passwordInput.inputValid}
+  className={styles.button_service}
+  onClick={async () => {
+    try {
+      await registration(loginInput.value, passwordInput.value);
+    } catch (error) {
+      console.log(error);
+    }
+  }}
+>
+  Войти
+</button>
            <a className = {styles.link3 } href="#">Восстановить пароль</a>
           <label className={styles.entrance}>Войти через:</label>
             <div className ={styles.options}>
